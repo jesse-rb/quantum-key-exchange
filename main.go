@@ -1,17 +1,17 @@
 package main
 
 import (
-	"log"
-	"os"
+	"quantum-key-exchange/node"
 )
 
-var info = log.New(os.Stdout, "\033[35minfo\t->\033[0m ", log.Lshortfile)
-var error = log.New(os.Stderr, "\033[31merror\t->\033[0m ", log.Lshortfile)
+var server *node.Node
+var client *node.Node
 
 func init() {
-	info.Println("Hi...")
+	server = node.NewNode(nil, nil, "server")
+	client = node.NewNode(server, nil, "client")
 }
 
 func main() {
-	error.Println("Nothing here yet!")
+	client.Send("Hello there")
 }
