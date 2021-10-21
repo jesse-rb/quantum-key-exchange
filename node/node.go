@@ -24,7 +24,8 @@ func NewNode(up *Node, name string) *Node {
 	node := &Node {
 		up:		up,
 		l: 		logger,
-		name:	name }
+		name:	name,
+	}
 
 	return node;
 }

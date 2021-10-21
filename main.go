@@ -1,16 +1,18 @@
 package main
 
-// var server *node.Node
-// var client *node.Node
+import (
+	"math/rand"
+	"time"
+)
+
+
 
 func init() {
-	// server = node.NewNode(nil, "server")
-	// client = node.NewNode(server, "client")
+	// Get new random seed for this run.
+	rand.Seed(time.Now().UTC().UnixNano()) // use time as seed
 }
 
 func main() {
-	// client.Send("Hello there")
-	// server.Send("lol")
-	// server.SetUp(client)
-	// server.Send("General Kenobi!")
+	// Testing logic in main_test.go
+	// Can run: `go test -v` to run all tests
 }
