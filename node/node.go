@@ -20,7 +20,6 @@ type Node struct {
 //
 func NewNode(up *Node, name string) *Node {
 	logger := log.New(os.Stderr, "-> ["+ name +"] -> ", log.Lmicroseconds)
-	// logger.SetPrefix(time.Now().Format("15:04:05") + " " + name + " ->\n")
 
 	node := &Node {
 		up:		up,
