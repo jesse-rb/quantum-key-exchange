@@ -11,7 +11,6 @@ import (
 //
 type Node struct {
 	up		*Node
-	down	*Node
 	l		*log.Logger
 	name	string
 }
@@ -19,7 +18,7 @@ type Node struct {
 //
 // Create a new Node
 //
-func NewNode(up *Node, down *Node, name string) *Node {
+func NewNode(up *Node, name string) *Node {
 	logger := log.New(os.Stderr, "-> ["+ name +"] -> ", log.Lmicroseconds)
 	// logger.SetPrefix(time.Now().Format("15:04:05") + " " + name + " ->\n")
 
@@ -32,9 +31,16 @@ func NewNode(up *Node, down *Node, name string) *Node {
 }
 
 //
+// Set upstream, so that upstream can still be changed later after node initialization
+//
+func (n *Node) SetUp(up *Node) {
+	n.up = up
+}
+
+//
 // Recieve message from downstream node
 //
-func (n *Node) Recv(msg string, from string) string {
+func (n *Node) Listen(msg string, from string) string {
 	n.l.Printf("\n recieved:\t%s\n from:\t\t%s", msg, from)
 	return msg
 }
@@ -44,9 +50,9 @@ func (n *Node) Recv(msg string, from string) string {
 //
 func (n *Node) Send(msg string) string {
 	if (n.up == nil) {
-		n.l.Println("\n\tNo upstream to send to")
+		n.l.Printf("\n sending:\t%s\n to:\t\tN/A\n", msg)
 		return "";
 	}
 	n.l.Printf("\n sending:\t%s\n to:\t\t%s\n", msg, n.up.name)
-	return n.up.Recv(msg, n.name)
+	return n.up.Listen(msg, n.name)
 }
