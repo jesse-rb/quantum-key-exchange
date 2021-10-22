@@ -13,6 +13,5 @@ func init() {
 }
 
 func main() {
-	// Testing logic in main_test.go
-	// Can run: `go test -v` to run all tests
+	
 }
