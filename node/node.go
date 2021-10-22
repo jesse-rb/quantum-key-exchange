@@ -1,3 +1,8 @@
+//
+// Not used in QKE algorithm, but a good simpler example of the communication between nodes
+// without the QKE overhead code (for referecne)
+//
+
 package node
 
 import (
@@ -19,7 +24,7 @@ type Node struct {
 // Create a new Node
 //
 func NewNode(up *Node, name string) *Node {
-	logger := log.New(os.Stderr, "-> ["+ name +"] -> ", log.Lmicroseconds)
+	logger := log.New(os.Stderr, "-> [Node]["+ name +"] -> ", log.Lmicroseconds)
 
 	node := &Node {
 		up:		up,

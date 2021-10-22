@@ -5,8 +5,6 @@ import (
 	"time"
 )
 
-
-
 func init() {
 	// Get new random seed for this run.
 	rand.Seed(time.Now().UTC().UnixNano()) // use current UTC time as seed
